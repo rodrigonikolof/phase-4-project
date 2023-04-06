@@ -2,19 +2,24 @@ import React, { useEffect, useState } from "react";
 import {Routes, Route} from 'react-router-dom';
 import Page1 from "./pages/page1";
 import Page2 from "./pages/page2";
+import Login from "./pages/Login";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
+    fetch("/me").then((r)=> {
+      if (r.ok){
+        r.json().then((user)=> setUser(user))
+      }
+    })
   }, []);
+
+  if (!user) return <Login onLogin={setUser} />;
 
   return (
 <>
-    <h1>Page Count: {count}</h1>
+    <h1>Logged in!</h1>
     <Routes>
       
 

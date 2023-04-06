@@ -6,9 +6,12 @@ Rails.application.routes.draw do
 
   get '/hello', to: 'application#hello_world'
 
+  get 'me', to: 'students#show'
   post 'signup', to: 'students#create'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'session#destroy'
+  resources :enrolments
+  
 
   get '*path',
       to: 'fallback#index',
