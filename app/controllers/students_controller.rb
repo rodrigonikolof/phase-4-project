@@ -11,6 +11,15 @@ class StudentsController < ApplicationController
         end
     end
 
+    def show 
+        student = Student.find_by(id: session[:student_id])
+        if student
+            render json: student
+        else 
+            render json: {error: "Unauthorised action"}, status: 401
+        end
+    end
+
     private
 
     def student_params
