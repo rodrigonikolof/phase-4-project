@@ -31,7 +31,7 @@ const handleChange = (event, selection)=>{
                 </ToggleButton>
             </ToggleButtonGroup>
 
-            {signUp? <SignUpForm/>: <LoginForm/>}
+            {signUp? <SignUpForm onLogin={onLogin}/>: <LoginForm onLogin={onLogin}/>}
             
             
         </div>

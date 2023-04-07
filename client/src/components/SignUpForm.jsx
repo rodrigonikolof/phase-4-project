@@ -2,7 +2,8 @@ import React, {useState} from "react"
 import {Typography, Button, Container, TextField, Box, MenuItem, FormControl, InputLabel, Select} from '@mui/material'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
-export default function SignUpForm(){
+export default function SignUpForm({onLogin}){
+
     const [name, setName] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -11,16 +12,38 @@ export default function SignUpForm(){
     const [usernameError, setUsernameError] = useState(false)
     const [passwordError, setPasswordError] = useState(false)
     const [houseError, setHouseError] = useState(false)
+    const [passwordConfirmation, setPasswordConfirmation] = useState('')
+    const [passwordConfirmationError, setPasswordConfirmationError] = useState(false)
+    const [errorFromServer, setErrorFromServer] = useState(false)
 
     const handleSubmit = (e)=>{
         e.preventDefault()
         name? setNameError(false) : setNameError(true)
         username? setUsernameError(false) : setUsernameError (true)
         password? setPasswordError(false) : setPasswordError (true)
+        passwordConfirmation == password? setPasswordConfirmationError(false) : setPasswordConfirmationError(true)
         house? setHouseError(false) : setHouseError (true)
 
-        if (name && username && password && house){
+        if (name && username && password && house && passwordConfirmation == password){
             console.log(name, username, house, password)
+            fetch('/signup',{
+               method: 'POST',
+               headers : { "Content-Type" : "application/json"}, 
+               body: JSON.stringify({
+                name,
+                username,
+                password,
+                password_confirmation : passwordConfirmation,
+                house_id : house
+               }),
+            }).then((r)=>{
+                if (r.ok){
+                    r.json().then((user) => onLogin(user));
+                } else {
+                    r.json().then((err)=>setErrorFromServer(err.errors))
+                    .then(console.log(errorFromServer))
+                }
+            })
         }
     }
 
@@ -70,6 +93,17 @@ export default function SignUpForm(){
                     value={password}        
                 />
 
+                <TextField 
+                    onChange={(e)=>{setPasswordConfirmation(e.target.value)}}
+                    label="Confirm Password"  
+                    type="password"  
+                    fullWidth
+                    required 
+                    sx={{marginBottom: 1}}  
+                    error={passwordConfirmationError}  
+                    value={passwordConfirmation}        
+                />
+
                 <FormControl fullWidth>
                     <InputLabel>Select Your House</InputLabel>
                     <Select
@@ -95,6 +129,9 @@ export default function SignUpForm(){
                 </Button>
 
             </form>
+
+       
+
         </Container>
     )
 }

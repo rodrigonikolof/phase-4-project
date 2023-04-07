@@ -2,12 +2,13 @@ import React, {useState} from 'react';
 import {Typography, Button, Container, TextField, Box, MenuItem, FormControl, InputLabel} from '@mui/material'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
-function LoginForm (){
+function LoginForm ({onLogin}){
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [usernameError, setUsernameError] = useState(false)
     const [passwordError, setPasswordError] = useState(false)
+    const [errorFromServer, setErrorFromServer] = useState([])
 
     const handleSubmit = (e)=>{
         e.preventDefault()
@@ -15,6 +16,19 @@ function LoginForm (){
         password? setPasswordError(false) : setPasswordError (true)
         if ( username && password ){
             console.log(username, password)
+            fetch("/login", {
+                method: "POST",
+                headers: {"Content-Type" : "application/json",},
+                body: JSON.stringify({username, password})
+            })
+                .then((r)=>{
+                    if(r.ok){
+                        r.json().then((user)=>{onLogin(user)})
+                    } else {
+                        r.json().then((err)=> setErrorFromServer(err.errors));
+                    }
+                })
+            
         }
     }
 
