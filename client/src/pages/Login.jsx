@@ -11,10 +11,11 @@ function Login({onLogin}){
 const [signUp, setSignUp] = useState(true)
 
 const handleChange = (event, selection)=>{
+    if (selection == null) {return 0}
      setSignUp(selection)
 }
 
-console.log(signUp)
+// console.log(signUp)
     return (
         <div>
             <ToggleButtonGroup
