@@ -3,6 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 import Page1 from "./pages/page1";
 import Page2 from "./pages/page2";
 import Login from "./pages/Login";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -19,6 +20,7 @@ function App() {
 
   return (
 <>
+    <Navbar user={user} setUser={setUser}/>
     <h1>Logged in!</h1>
     <Routes>
       
