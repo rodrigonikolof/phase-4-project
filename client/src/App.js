@@ -4,6 +4,7 @@ import Page1 from "./pages/page1";
 import Page2 from "./pages/page2";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
+import MyEnrolments from "./pages/MyEnrolments";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -25,7 +26,7 @@ function App() {
     <Routes>
       
 
-      <Route path="/" element={<Page1/>}/>
+      <Route path="/" element={<MyEnrolments user={user}/>}/>
       <Route path="/testing" element={<Page2/>}/>
       
     </Routes>
