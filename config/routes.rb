@@ -8,8 +8,11 @@ Rails.application.routes.draw do
 
   get 'me', to: 'students#show'
   post 'signup', to: 'students#create'
+  patch 'update', to: 'students#update'
+
   post 'login', to: 'sessions#create'
-  delete 'logout', to: 'session#destroy'
+  delete 'logout', to: 'sessions#destroy'
+  
   resources :enrolments
   
 

@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import {Typography, Button, Container, TextField, Box, MenuItem, FormControl, InputLabel, Select} from '@mui/material'
+import {Typography, Button, Container, TextField, MenuItem, FormControl, InputLabel, Select} from '@mui/material'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 export default function SignUpForm({onLogin}){
@@ -21,10 +21,10 @@ export default function SignUpForm({onLogin}){
         name? setNameError(false) : setNameError(true)
         username? setUsernameError(false) : setUsernameError (true)
         password? setPasswordError(false) : setPasswordError (true)
-        passwordConfirmation == password? setPasswordConfirmationError(false) : setPasswordConfirmationError(true)
+        passwordConfirmation === password? setPasswordConfirmationError(false) : setPasswordConfirmationError(true)
         house? setHouseError(false) : setHouseError (true)
 
-        if (name && username && password && house && passwordConfirmation == password){
+        if (name && username && password && house && passwordConfirmation === password){
             console.log(name, username, house, password)
             fetch('/signup',{
                method: 'POST',

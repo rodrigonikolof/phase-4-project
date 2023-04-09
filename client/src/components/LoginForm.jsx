@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Typography, Button, Container, TextField, Box, MenuItem, FormControl, InputLabel} from '@mui/material'
+import {Typography, Button, Container, TextField} from '@mui/material'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 function LoginForm ({onLogin}){
@@ -15,7 +15,6 @@ function LoginForm ({onLogin}){
         username? setUsernameError(false) : setUsernameError (true)
         password? setPasswordError(false) : setPasswordError (true)
         if ( username && password ){
-            console.log(username, password)
             fetch("/login", {
                 method: "POST",
                 headers: {"Content-Type" : "application/json",},

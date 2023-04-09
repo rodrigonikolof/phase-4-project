@@ -13,10 +13,10 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-export default function Navbar(){
+export default function Navbar({user, setUser}){
 
     const pages = ['My Enrolments', 'Available Courses'];
-    const settings = [ 'Profile', 'Logout'];
+    const settings = [ 'Profile',  'Logout'];
 
     
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -41,7 +41,7 @@ export default function Navbar(){
         fetch("/logout", {method: "DELETE"})
         .then((r)=>{
             if(r.ok){
-                setAnchorElUser(null)
+                setUser(null)
             }
         })
     }
@@ -146,7 +146,7 @@ return(
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" src="" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -165,16 +165,24 @@ return(
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              
                 <MenuItem 
-                    key={setting.text} 
+                    key={'profile'} 
                     onClick={()=>{
                         handleCloseUserMenu();
-                        console.log('clicked') //continue from here
+                        handleLogoutClick()
                         }}>
-                  <Typography textAlign="center">{setting.text}</Typography>
+                  <Typography textAlign="center">Profile</Typography>
                 </MenuItem>
-              ))}
+                <MenuItem 
+                    key={'logout'} 
+                    onClick={()=>{
+                        handleCloseUserMenu();
+                        handleLogoutClick()
+                        }}>
+                  <Typography textAlign="center">Logout</Typography>
+                </MenuItem>
+              
             </Menu>
           </Box>
         </Toolbar>
