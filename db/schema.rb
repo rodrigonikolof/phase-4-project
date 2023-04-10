@@ -10,21 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_09_020205) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_10_000735) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "courses", force: :cascade do |t|
     t.string "course_name"
     t.string "course_teacher"
-    t.string "course_day_1"
-    t.string "course_day_2"
+    t.string "course_day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "enrolments", force: :cascade do |t|
-    t.string "course_day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "course_id"
