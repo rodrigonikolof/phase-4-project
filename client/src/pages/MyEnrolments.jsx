@@ -25,7 +25,7 @@ return (
         </Box>
         <Box sx={{display: 'flex', justifyContent: 'center', mt:3}}>
             <Box sx={{ml: 3, mr: 3}} >
-                    <Grid container spacing={12}>
+                    <Grid container spacing={3}>
                         {user.courses.map((course)=>{
                             
                             return(
