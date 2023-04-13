@@ -19,7 +19,6 @@ return (
                     component="h2" 
                     color="textSecondary"
                     gutterBottom
-                    fullWidth
                 >
                     {`My Enrolments`}
                 </Typography>
@@ -30,8 +29,8 @@ return (
                         {user.courses.map((course)=>{
                             
                             return(
-                            <Grid item xs={12} md={6}> 
-                                <EnrolmentCard course={course}/>
+                            <Grid item xs={12} md={6} key={course.id}> 
+                                <EnrolmentCard course={course} key={course.id}/>
                             </Grid> 
                             ) 
                         })}
