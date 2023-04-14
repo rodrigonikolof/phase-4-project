@@ -1,6 +1,6 @@
 import React from "react"
 import { Box, Card, CardActions, CardContent, Button, Typography } from "@mui/material"
-import ConfirmationModal from "./ConfirmationModal"
+
 
 import Backdrop from '@mui/material/Backdrop';
 import Modal from '@mui/material/Modal';
@@ -11,7 +11,8 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    maxWidth: 400,
+    minWidth: 300,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -22,6 +23,10 @@ export default function EnrolmentCard({course}){
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const handleDelete = (e)=>{
+      console.log(course.id)
+    }
 
     return(
         <>
@@ -43,7 +48,7 @@ export default function EnrolmentCard({course}){
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small" onClick={handleOpen}>Delete Enrolment</Button>
+                <Button size="small" onClick={handleOpen}>Cancel Enrolment</Button>
             </CardActions>
     </Card>
 
@@ -63,11 +68,13 @@ export default function EnrolmentCard({course}){
         <Fade in={open}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              Text in a modal
+              Cancel Enrolment?
             </Typography>
-            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            <Typography id="transition-modal-description" sx={{ mt: 2, mb:2 }}>
+              Cancelling your enrolment will increase your student loan regardless (out of spite).
             </Typography>
+            <Button sx={{mr:3}} onClick={handleDelete}>Cancel Enrolment</Button>
+            <Button onClick={handleClose}>Stay Enrolled</Button>
           </Box>
         </Fade>
       </Modal>
