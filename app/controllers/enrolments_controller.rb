@@ -6,7 +6,7 @@ class EnrolmentsController < ApplicationController
     end
 
     def destroy
-        enrolment = Enrolment.find(params[:id])
+        enrolment = Enrolment.where(course_id: params[:course_id], student_id: session[:student_id])
         enrolment.destroy
     end
 
