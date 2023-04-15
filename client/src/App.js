@@ -4,6 +4,7 @@ import Page2 from "./pages/page2";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import MyEnrolments from "./pages/MyEnrolments";
+import Home from "./pages/Home";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -23,8 +24,8 @@ function App() {
     <Navbar user={user} setUser={setUser}/>
     
     <Routes>
-
-      <Route path="/" element={<MyEnrolments user={user}/>}/>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/myenrolments" element={<MyEnrolments user={user}/>}/>
       <Route path="/testing" element={<Page2/>}/>
       
     </Routes>

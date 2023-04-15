@@ -23,6 +23,7 @@ export default function EnrolmentCard({course}){
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    
 
     const handleDelete = (e)=>{
       console.log(course.id)

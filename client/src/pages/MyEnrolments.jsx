@@ -3,9 +3,24 @@ import { Container, Typography, Box, Grid } from "@mui/material"
 import EnrolmentCard from "../components/EnrolmentCard"
 
 export default function MyEnrolments({user}){
+    const [enrolments, setEnrolments] = useState(null)
+    const [loading, setLoading] = useState(true)
+
+// console.log(user)
 
 
-console.log(user)
+    useEffect(()=>{
+        fetch(fetch("/enrolments").then((r)=> {
+            if (r.ok){
+            r.json().then((enrolment)=> setEnrolments(enrolment))
+            .then(()=>console.log(enrolments))
+            }
+        })).catch((err)=>console.log(err))
+        console.log('rendered')
+    },[])
+
+
+
 
 
 return (
