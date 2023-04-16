@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {Link, useNavigate} from 'react-router-dom'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,12 +16,16 @@ import AdbIcon from '@mui/icons-material/Adb';
 
 export default function Navbar({user, setUser}){
 
-    const pages = ['My Enrolments', 'Available Courses'];
+    const pages = [
+                    {text: 'My Enrolments', path: '/enrolments'}, 
+                    {text: 'Available Courses', path: '/courses'}
+                  ];
     const settings = [ 'Profile',  'Logout'];
 
     
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const navigate = useNavigate()
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -53,6 +58,7 @@ return(
       <Container maxWidth="xl" >
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          {/* <Link to="/" style={{textDecoration: 'none'}} > */}
           <Typography
             variant="h6"
             noWrap
@@ -70,6 +76,7 @@ return(
           >
             LOGO
           </Typography>
+          {/* </Link> */}
 
 
 
@@ -104,20 +111,28 @@ return(
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                // <Link to={page.path} style={{textDecoration: 'none'}} key={page.text}>
+                <MenuItem key={page.text} 
+                  onClick={()=>{
+                    handleCloseNavMenu()
+                    navigate(page.path)
+                    }}>
+                  <Typography textAlign="center">{page.text}</Typography>
                 </MenuItem>
+                // </Link>
               ))}
             </Menu>
 
 
           </Box>
+          
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -133,13 +148,18 @@ return(
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+              
+                <Button
+                  key={page.text}
+                  onClick={()=>{
+                    handleCloseNavMenu()
+                    navigate(page.path)
+                  }}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page.text}
+                </Button>
+              
             ))}
           </Box>
 

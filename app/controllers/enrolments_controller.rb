@@ -6,7 +6,7 @@ class EnrolmentsController < ApplicationController
     # end
     def index
         enrolments = Enrolment.all 
-        render json: enrolments
+        render json: enrolments, status: :ok
     end
 
     def create

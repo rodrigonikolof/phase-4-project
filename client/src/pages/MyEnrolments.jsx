@@ -9,19 +9,26 @@ export default function MyEnrolments({user}){
 // console.log(user)
 
 
-    useEffect(()=>{
-        fetch(fetch("/enrolments").then((r)=> {
-            if (r.ok){
-            r.json().then((enrolment)=> setEnrolments(enrolment))
-            .then(()=>console.log(enrolments))
-            }
-        })).catch((err)=>console.log(err))
-        console.log('rendered')
-    },[])
+    // useEffect(()=>{
+    //     fetch("/enrolments").then((r)=> {
+    //         if (r.ok){
+    //         r.json().then((enrolment)=> setEnrolments(enrolment))
+    //         .then(()=>console.log(enrolments))
+    //         }
+    //     }).catch((err)=>console.log(err))
+    //     console.log(enrolments)
+    // },[])
 
+    const getEnrolments = async()=>{
+        let response = await fetch("/enrolments")
+        let data = await response.json()
+        setEnrolments(data)
+        console.log(enrolments)
+    }
 
-
-
+useEffect(()=>{
+    getEnrolments()
+},[])
 
 return (
     <>
