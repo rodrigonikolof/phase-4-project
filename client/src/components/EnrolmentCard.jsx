@@ -19,14 +19,15 @@ const style = {
     p: 4,
   };
 
-export default function EnrolmentCard({course}){
+export default function EnrolmentCard({enrolment}){
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     
+    console.log(enrolment)
 
-    const handleDelete = (e)=>{
-      console.log(course.id)
+    const handleDelete = ()=>{
+      // console.log(enrolment)
     }
 
     return(
@@ -37,10 +38,10 @@ export default function EnrolmentCard({course}){
                 Word of the Day
                 </Typography> */}
                 <Typography variant="h5" component="div">
-                {course.course_name} 
+                {enrolment.course.course_name}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                {course.course_day} - Taught by {course.course_teacher}
+                {enrolment.course.course_day} - Taught by {enrolment.course.course_teacher}
                 </Typography>
                 <Typography variant="body2">
                 This is some description? Maybe? Dunno. 
