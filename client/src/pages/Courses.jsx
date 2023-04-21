@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {Box, Typography, Grid} from '@mui/material'
 import CourseCard from "../components/CourseCard";
 
-export default function Courses(){
+export default function Courses({enrolments}){
     const [courses, setCourses] = useState(null)
 
     const getCourses = async()=>{
@@ -38,7 +38,7 @@ export default function Courses(){
 
                             return (
                             <Grid item xs={12} md={6} lg={4} key={course.id}> 
-                                <CourseCard course={course}  key={course.id}/>
+                                <CourseCard course={course} enrolments={enrolments} key={course.id}/>
                             </Grid>
                             )
                         })}

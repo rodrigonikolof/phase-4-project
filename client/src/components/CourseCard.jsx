@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -27,17 +27,20 @@ const ExpandMore = styled((props) => {
     }),
   }));
 
-export default function CourseCard({course}){
-    
+export default function CourseCard({course, enrolments}){
     const [expanded, setExpanded] = React.useState(false);
+    const [enrolled, setEnrolled] = useState(false)
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
   
-    
-
-    
+useEffect(()=>{
+    if(enrolments.find(enrolment => enrolment.course_id === course.id )){
+        setEnrolled(true)
+       }
+},[])
+   
     return(
     <>
 
@@ -48,9 +51,9 @@ export default function CourseCard({course}){
       />
       <CardActions disableSpacing>
         <IconButton aria-label="sign-up">
-          <AddBoxIcon />
+         {enrolled? <FileDownloadDoneIcon/> :  <AddBoxIcon />}
         </IconButton>
-        <Typography>Sign Up</Typography>
+        <Typography>{enrolled? 'Enrolled' : 'Sign Up'}</Typography>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

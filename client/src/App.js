@@ -9,6 +9,7 @@ import Courses from "./pages/Courses";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [enrolments, setEnrolments] = useState(null)
 
   useEffect(() => {
     fetch("/me").then((r)=> {
@@ -18,6 +19,18 @@ function App() {
     })
   }, []);
 
+  const getEnrolments = async()=>{
+    let response = await fetch("/enrolments")
+    let data = await response.json()
+    setEnrolments(data)
+}
+
+useEffect(()=>{
+console.log(enrolments)
+if (enrolments === null){getEnrolments()}
+// else {console.log(enrolments)}
+},[user])
+
   if (!user) return <Login onLogin={setUser} />;
 
   return (
@@ -26,8 +39,8 @@ function App() {
     
     <Routes>
       <Route path="/" element={<Home/>}/>
-      <Route path="/enrolments" element={<MyEnrolments user={user}/>}/>
-      <Route path="/courses" element={<Courses />}/>
+      <Route path="/enrolments" element={<MyEnrolments enrolments={enrolments} setEnrolments={setEnrolments}/>}/>
+      <Route path="/courses" element={<Courses enrolments={enrolments}/>}/>
       <Route path="/testing" element={<Page2/>}/>
       
     </Routes>

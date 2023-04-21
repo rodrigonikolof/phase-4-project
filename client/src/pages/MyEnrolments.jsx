@@ -2,13 +2,8 @@ import React, {useState, useEffect} from "react"
 import { Container, Typography, Box, Grid } from "@mui/material"
 import EnrolmentCard from "../components/EnrolmentCard"
 
-export default function MyEnrolments({user}){
-    const [enrolments, setEnrolments] = useState(null)
-   
-
-// console.log(user)
-
-
+export default function MyEnrolments({enrolments, setEnrolments}){
+    
     // useEffect(()=>{
     //     fetch("/enrolments").then((r)=> {
     //         if (r.ok){
@@ -18,20 +13,6 @@ export default function MyEnrolments({user}){
     //     }).catch((err)=>console.log(err))
     //     console.log(enrolments)
     // },[])
-
-    const getEnrolments = async()=>{
-        let response = await fetch("/enrolments")
-        let data = await response.json()
-        setEnrolments(data)
-        
-    }
-
-
-useEffect(()=>{
-    console.log(enrolments)
-    if (enrolments === null){getEnrolments()}
-    // else {console.log(enrolments)}
-})
 
 const handleDelete = (id)=>{
     fetch(`/enrolments/${id}`, {
