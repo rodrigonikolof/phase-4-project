@@ -57,12 +57,12 @@ return (
         </Box>
         {enrolments ? 
         <Box sx={{display: 'flex', justifyContent: 'center', mt:3}}>
-            <Box sx={{ml: 3, mr: 3}} >
+            <Box sx={{ml: 6, mr: 6}} >
                     <Grid container spacing={3}>
                         {enrolments.map((enrolment)=>{
                             
                             return(
-                            <Grid item xs={12} md={6} key={enrolment.id}> 
+                            <Grid item xs={12} md={6} lg={4} key={enrolment.id}> 
                                 <EnrolmentCard enrolment={enrolment} handleDelete={handleDelete} key={enrolment.id}/>
                             </Grid> 
                             ) 
