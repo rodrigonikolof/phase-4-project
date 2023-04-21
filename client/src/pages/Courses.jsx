@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
-import {Box, Typography} from '@mui/material'
+import {Box, Typography, Grid} from '@mui/material'
+import CourseCard from "../components/CourseCard";
 
 export default function Courses(){
     const [courses, setCourses] = useState(null)
@@ -26,9 +27,26 @@ export default function Courses(){
                     color="textSecondary"
                     gutterBottom
                 >
-                    Available Courses
+                    Browse Available Courses
                 </Typography>
         </Box>
+        {courses? 
+            <Box sx={{display: 'flex', justifyContent: 'center', mt:3}}>    
+                <Box sx={{ml: 6, mr: 6}} >
+                    <Grid container spacing={3}>
+                        {courses.map((course)=>{
+
+                            return (
+                            <Grid item xs={12} md={6} lg={4} key={course.id}> 
+                                <CourseCard course={course}  key={course.id}/>
+                            </Grid>
+                            )
+                        })}
+
+                    </Grid>
+                </Box>
+            </Box>
+    :null}
         </>
     )
 }
