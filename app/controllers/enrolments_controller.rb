@@ -15,8 +15,10 @@ class EnrolmentsController < ApplicationController
     end
 
     def destroy
-        enrolment = Enrolment.where(course_id: params[:course_id], student_id: session[:student_id])
+        # enrolment = Enrolment.where(course_id: params[:course_id], student_id: session[:student_id])
+        enrolment = Enrolment.find_by(id: params[:id])
         enrolment.destroy
+        head :no_content
     end
 
     def test

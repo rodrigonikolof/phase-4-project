@@ -19,16 +19,14 @@ const style = {
     p: 4,
   };
 
-export default function EnrolmentCard({enrolment}){
+export default function EnrolmentCard({enrolment, handleDelete}){
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     
-    console.log(enrolment)
+    // console.log(enrolment)
 
-    const handleDelete = ()=>{
-      // console.log(enrolment)
-    }
+    
 
     return(
         <>
@@ -75,7 +73,7 @@ export default function EnrolmentCard({enrolment}){
             <Typography id="transition-modal-description" sx={{ mt: 2, mb:2 }}>
               Cancelling your enrolment will increase your student loan regardless (out of spite).
             </Typography>
-            <Button sx={{mr:3}} onClick={handleDelete}>Cancel Enrolment</Button>
+            <Button sx={{mr:3}} onClick={()=>handleDelete(enrolment.id)}>Cancel Enrolment</Button>
             <Button onClick={handleClose}>Stay Enrolled</Button>
           </Box>
         </Fade>

@@ -23,13 +23,22 @@ export default function MyEnrolments({user}){
         let response = await fetch("/enrolments")
         let data = await response.json()
         setEnrolments(data)
+        
     }
 
 
 useEffect(()=>{
+    console.log(enrolments)
     if (enrolments === null){getEnrolments()}
     // else {console.log(enrolments)}
 })
+
+const handleDelete = (id)=>{
+    fetch(`/enrolments/${id}`, {
+      method: 'DELETE',
+    })
+    setEnrolments(enrolments.filter(enrolment => enrolment.id != id))
+  }
 
 return (
     <>
@@ -54,7 +63,7 @@ return (
                             
                             return(
                             <Grid item xs={12} md={6} key={enrolment.id}> 
-                                <EnrolmentCard enrolment={enrolment} key={enrolment.id}/>
+                                <EnrolmentCard enrolment={enrolment} handleDelete={handleDelete} key={enrolment.id}/>
                             </Grid> 
                             ) 
                         })}
