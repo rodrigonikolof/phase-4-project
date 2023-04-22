@@ -43,7 +43,7 @@ return (
                         {enrolments.map((enrolment)=>{
                             
                             return(
-                            <Grid item xs={12} md={6} lg={4} key={enrolment.id}> 
+                            <Grid item xs={12} md={6}  key={enrolment.id}> 
                                 <EnrolmentCard enrolment={enrolment} handleDelete={handleDelete} key={enrolment.id}/>
                             </Grid> 
                             ) 

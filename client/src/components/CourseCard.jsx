@@ -27,9 +27,10 @@ const ExpandMore = styled((props) => {
     }),
   }));
 
-export default function CourseCard({course, enrolments}){
+export default function CourseCard({course, enrolments, user, setEnrolments}){
     const [expanded, setExpanded] = React.useState(false);
     const [enrolled, setEnrolled] = useState(false)
+    const [newEnrolment, setNewEnrolment] = useState(null)
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -41,6 +42,25 @@ useEffect(()=>{
        }
 },[])
    
+const handleSignUp = ()=>{
+  fetch('/enrolments',{
+    method: 'POST',
+    headers : { "Content-Type" : "application/json"}, 
+    body: JSON.stringify({
+      student_id : user.id,
+      course_id : course.id
+     }),
+  }).then((r)=>{
+    if (r.ok){
+        r.json().then(data => setEnrolments(enrolments.push(data)))
+        .then(() => setEnrolled(true))
+        .then(()=>console.log(enrolments))
+        
+    }
+  })
+  
+}
+
     return(
     <>
 
@@ -51,9 +71,9 @@ useEffect(()=>{
       />
       <CardActions disableSpacing>
         <IconButton aria-label="sign-up">
-         {enrolled? <FileDownloadDoneIcon/> :  <AddBoxIcon />}
+         {enrolled? <FileDownloadDoneIcon disabled/> :  <AddBoxIcon onClick={handleSignUp}/>}
         </IconButton>
-        <Typography>{enrolled? 'Enrolled' : 'Sign Up'}</Typography>
+          <Typography>{enrolled? 'Enrolled' : 'Sign Up'}</Typography>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

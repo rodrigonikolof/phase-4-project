@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   
   get '/enrolments', to: 'enrolments#index'
   delete '/enrolments/:id', to: 'enrolments#destroy'
+  post '/enrolments', to: 'enrolments#create'
   
   get 'courses', to: 'courses#index'
 

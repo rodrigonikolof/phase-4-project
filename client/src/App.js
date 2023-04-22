@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import MyEnrolments from "./pages/MyEnrolments";
 import Home from "./pages/Home";
 import Courses from "./pages/Courses";
+import Profile from "./pages/Profile";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -29,7 +30,7 @@ useEffect(()=>{
 console.log(enrolments)
 if (enrolments === null){getEnrolments()}
 // else {console.log(enrolments)}
-},[user])
+},[])
 
   if (!user) return <Login onLogin={setUser} />;
 
@@ -40,8 +41,9 @@ if (enrolments === null){getEnrolments()}
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/enrolments" element={<MyEnrolments enrolments={enrolments} setEnrolments={setEnrolments}/>}/>
-      <Route path="/courses" element={<Courses enrolments={enrolments}/>}/>
-      <Route path="/testing" element={<Page2/>}/>
+      <Route path="/courses" element={<Courses enrolments={enrolments} setEnrolments={setEnrolments} user={user}/>}/>
+      <Route path="/profile" element={<Profile user={user}/>}/>
+      
       
     </Routes>
 </>
