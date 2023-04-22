@@ -190,7 +190,7 @@ return(
                     key={'profile'} 
                     onClick={()=>{
                         handleCloseUserMenu();
-                        console.log('clicked profile page')
+                        navigate('/profile')
                         }}>
                   <Typography textAlign="center">Profile</Typography>
                 </MenuItem>
