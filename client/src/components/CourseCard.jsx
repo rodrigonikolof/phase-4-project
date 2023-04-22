@@ -52,7 +52,10 @@ const handleSignUp = ()=>{
      }),
   }).then((r)=>{
     if (r.ok){
-        r.json().then(data => setEnrolments(enrolments.push(data)))
+        r.json().then(data => {
+          enrolments.push(data)
+          setEnrolments(enrolments)
+        })
         .then(() => setEnrolled(true))
         .then(()=>console.log(enrolments))
         

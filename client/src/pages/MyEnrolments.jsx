@@ -36,7 +36,7 @@ return (
                     {`My Enrolments`}
                 </Typography>
         </Box>
-        {enrolments ? 
+        {Array.isArray(enrolments) ? 
         <Box sx={{display: 'flex', justifyContent: 'center', mt:3}}>
             <Box sx={{ml: 6, mr: 6}} >
                     <Grid container spacing={3}>
@@ -51,7 +51,7 @@ return (
                     </Grid>
             </Box>
         </Box>
-        :null}
+        : console.log(enrolments)}
     </>
 )
 
