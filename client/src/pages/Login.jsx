@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { ToggleButton, ToggleButtonGroup, Box, Typography } from "@mui/material";
 import LoginForm from '../components/LoginForm'
 import SignUpForm from "../components/SignUpForm";
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
 
 
@@ -17,24 +18,56 @@ const handleChange = (event, selection)=>{
 
 // console.log(signUp)
     return (
-        <div>
-            <ToggleButtonGroup
-            value={signUp}
-            exclusive
-            onChange={handleChange}
+        <>
+            <Box 
+            sx={{display: 'flex', justifyContent: 'center', mt: 1}}
             >
-                <ToggleButton value={true}>
-                    Sign Up
-                </ToggleButton>
-                <ToggleButton value={false}>
-                    Login
-                </ToggleButton>
-            </ToggleButtonGroup>
+                <EmojiEventsIcon fontSize="large" />
+          
+                <Typography
+                    variant="h2"
+                    noWrap
+                    component="h2"
+                    sx={{
+                    mr: 4,
+                    display: { xs: 'none', md: 'flex' },
+                    fontFamily: 'monospace',
+                    fontWeight: 700,
+                    letterSpacing: '.3rem',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                    }}
+                >
+                 YOUDEMY
+                </Typography>
+            </Box>
 
-            {signUp? <SignUpForm onLogin={onLogin}/>: <LoginForm onLogin={onLogin}/>}
+            <Box 
+            sx={{display: 'flex', justifyContent: 'center', mt: 1}}
+            fullWidth
+            >
+                    <ToggleButtonGroup
+                    value={signUp}
+                    exclusive
+                    onChange={handleChange}
+                    >
+                        <ToggleButton value={true}>
+                            Sign Up
+                        </ToggleButton>
+                        <ToggleButton value={false}>
+                            Login
+                        </ToggleButton>
+                    </ToggleButtonGroup>
+                
+                </Box>
+                <Box sx={{display: 'flex', justifyContent: 'center', mt: 1}} >  
+                    <Box sx={{maxWidth:500}}>  
+                        {signUp? <SignUpForm onLogin={onLogin}/>: <LoginForm onLogin={onLogin}/>}
+                    </Box>  
+                </Box> 
             
-            
-        </div>
+        </>      
+        
     )
 
 }

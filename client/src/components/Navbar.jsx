@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
 export default function Navbar({user, setUser}){
 
@@ -54,18 +55,18 @@ export default function Navbar({user, setUser}){
 
 
 return(
-<AppBar position="static" color='primary'>
+<AppBar position="static" color='transparent'>
       <Container maxWidth="xl" >
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <EmojiEventsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           {/* <Link to="/" style={{textDecoration: 'none'}} > */}
           <Typography
-            variant="h6"
+            variant="h4"
             noWrap
             component="a"
             href="/"
             sx={{
-              mr: 2,
+              mr: 4,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
@@ -74,7 +75,7 @@ return(
               textDecoration: 'none',
             }}
           >
-            LOGO
+            YOUDEMY
           </Typography>
           {/* </Link> */}
 
@@ -155,7 +156,7 @@ return(
                     handleCloseNavMenu()
                     navigate(page.path)
                   }}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={{ my: 2, color: 'black', display: 'block' }}
                 >
                   {page.text}
                 </Button>
