@@ -74,7 +74,7 @@ const handleSignUp = ()=>{
       />
       <CardActions disableSpacing>
         <IconButton aria-label="sign-up">
-         {enrolled? <FileDownloadDoneIcon disabled/> :  <AddBoxIcon onClick={handleSignUp}/>}
+         {enrolled? <FileDownloadDoneIcon disabled/> :  <AddBoxIcon onClick={handleSignUp} sx={{color:'skyblue'}}/>}
         </IconButton>
           <Typography>{enrolled? 'Enrolled' : 'Sign Up'}</Typography>
         <ExpandMore

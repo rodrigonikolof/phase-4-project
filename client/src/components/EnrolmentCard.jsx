@@ -31,7 +31,7 @@ export default function EnrolmentCard({enrolment, handleDelete}){
     return(
         <>
         <Card sx={{ minWidth: 275, maxWidth: 800, mb:2}}>
-            <CardContent>
+            <CardContent sx={{background: 'skyblue' }}>
                 {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 Word of the Day
                 </Typography> */}
@@ -41,11 +41,11 @@ export default function EnrolmentCard({enrolment, handleDelete}){
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                 {enrolment.course.course_day} - Taught by {enrolment.course.course_teacher}
                 </Typography>
-                <Typography variant="body2">
+                {/* <Typography variant="body2">
                 This is some description? Maybe? Dunno. 
                 <br />
                 {'"a benevolent smile"'}
-                </Typography>
+                </Typography> */}
             </CardContent>
             <CardActions>
                 <Button size="small" onClick={handleOpen}>Cancel Enrolment</Button>
