@@ -7,7 +7,7 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
 
 
-function Login({onLogin}){
+function Login({onLogin, houses}){
 
 const [signUp, setSignUp] = useState(true)
 
@@ -62,7 +62,7 @@ const handleChange = (event, selection)=>{
                 </Box>
                 <Box sx={{display: 'flex', justifyContent: 'center', mt: 1}} >  
                     <Box sx={{maxWidth:500}}>  
-                        {signUp? <SignUpForm onLogin={onLogin}/>: <LoginForm onLogin={onLogin}/>}
+                        {signUp? <SignUpForm onLogin={onLogin} houses={houses}/>: <LoginForm onLogin={onLogin}/>}
                     </Box>  
                 </Box> 
             

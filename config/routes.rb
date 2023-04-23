@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   
   get 'courses', to: 'courses#index'
 
+  get 'houses', to: 'houses#index'
+
   get '*path',
       to: 'fallback#index',
       constraints: ->(req) { !req.xhr? && req.format.html? }

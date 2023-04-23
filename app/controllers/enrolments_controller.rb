@@ -5,7 +5,7 @@ class EnrolmentsController < ApplicationController
     #     render json: enrolments 
     # end
     def index
-        enrolments = Enrolment.all 
+        enrolments = Enrolment.where(student_id: session[:student_id]) 
         render json: enrolments, status: :ok
     end
 

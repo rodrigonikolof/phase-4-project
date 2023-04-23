@@ -2,8 +2,8 @@ import React, {useState} from "react"
 import {Typography, Button, Container, TextField, MenuItem, FormControl, InputLabel, Select} from '@mui/material'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
-export default function SignUpForm({onLogin}){
-
+export default function SignUpForm({onLogin, houses}){
+    
     const [name, setName] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -46,7 +46,7 @@ export default function SignUpForm({onLogin}){
             })
         }
     }
-
+console.log(houses)
 
     return (
         <Container>
@@ -114,8 +114,11 @@ export default function SignUpForm({onLogin}){
                         required
                     error={houseError}
                     >
-                        <MenuItem value={1} key={'1'}>Scaredy Cats</MenuItem>
-                        <MenuItem value={2} key={'2'}>Frightened Bananas</MenuItem>
+                        {houses.map((house)=>{
+                         return   <MenuItem value={house.id} key={house.id}>{house.house_name}</MenuItem>
+                        })}
+                        {/* <MenuItem value={1} key={'1'}>Scaredy Cats</MenuItem>
+                        <MenuItem value={2} key={'2'}>Frightened Bananas</MenuItem> */}
                     </Select>
                 </FormControl>
 

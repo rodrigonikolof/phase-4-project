@@ -36,6 +36,7 @@ return (
                     {`My Enrolments`}
                 </Typography>
         </Box>
+        
         {Array.isArray(enrolments) ? 
         <Box sx={{display: 'flex', justifyContent: 'center', mt:3}}>
             <Box sx={{ml: 6, mr: 6}} >
@@ -52,6 +53,8 @@ return (
             </Box>
         </Box>
         : console.log(enrolments)}
+                        
+                    
     </>
 )
 
