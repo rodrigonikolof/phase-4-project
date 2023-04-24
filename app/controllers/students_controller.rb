@@ -23,7 +23,7 @@ class StudentsController < ApplicationController
     def update
         student = Student.find_by(id: session[:student_id])
             if student&.authenticate(params[:password])
-                student.update(password: params[:new_password], password_confirmation: params[:password_confirmation])
+                student.update(student_params)
                 render json: student, status: :accepted
             else
                 render json: {errors: ['Invalid request']}, status: :unauthorized 

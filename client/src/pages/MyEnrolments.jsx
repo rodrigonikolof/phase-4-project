@@ -37,13 +37,14 @@ return (
                 </Typography>
         </Box>
         
-        {Array.isArray(enrolments) ? 
+        {/* {Array.isArray(enrolments) ?  */}
         <Box sx={{display: 'flex', justifyContent: 'center', mt:3}}>
             <Box sx={{ml: 6, mr: 6}} >
                     <Grid container spacing={3}>
                         {enrolments.map((enrolment)=>{
                             
                             return(
+                                
                             <Grid item xs={12} md={6}  key={enrolment.id}> 
                                 <EnrolmentCard enrolment={enrolment} handleDelete={handleDelete} key={enrolment.id}/>
                             </Grid> 
@@ -52,7 +53,7 @@ return (
                     </Grid>
             </Box>
         </Box>
-        : console.log(enrolments)}
+        {/* : console.log(enrolments)} */}
                         
                     
     </>

@@ -35,11 +35,15 @@ useEffect(()=>{
     setEnrolments(data)
 }
 
+// useEffect(()=>{
+// console.log(enrolments)
+// if (enrolments === null){getEnrolments()}
+// // else {console.log(enrolments)}
+// },[user])
 useEffect(()=>{
-console.log(enrolments)
-if (enrolments === null){getEnrolments()}
-// else {console.log(enrolments)}
-})
+  if(user)getEnrolments();
+},[user])
+
 
   if (!user) return <Login onLogin={setUser} houses={houses}/>;
 
