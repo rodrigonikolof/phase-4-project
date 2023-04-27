@@ -11,9 +11,10 @@ Keep in mind that the courses from the db:seeds file are (very sadly) not real a
 Frontend: </br>
 * React </br>
 * Material UI
+</br> 
 </br>
-Backend: 
-* Ruby on Rails 7 supplying the API 
+Backend: </br>
+* Ruby on Rails 7 supplying the API </br>
 * Ruby 3.2.2
 
 <h3> Running the Application</h3>
