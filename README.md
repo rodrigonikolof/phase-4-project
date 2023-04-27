@@ -1,24 +1,27 @@
-# README
+# PHASE-4-PROJECT: YOUDEMY
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<h3> What is it? </h3>
+Youdemy is a fullstack application which allows students to sign up/sign in and enrol in various courses. 
+It was built as part of my software engineering course from Academy Xi (Flatiron School).
+Keep in mind that the courses from the db:seeds file are (very sadly) not real and you won't actually learn the Kamehameha technique. However, if you do learn it, please let me know.  
 
-Things you may want to cover:
+<h3> What technologies does it use? </h3>
+Frontend: React + Material UI
 
-* Ruby version
+Backend: 
+* Ruby on Rails 7 supplying the API 
+* Ruby 3.2.2
 
-* System dependencies
+<h3> Running the Application</h3>
+Prior to running the application locally, ensure to have Postgresql installed. 
+Once installed, ensure that the database is running (unlike SQLite, Postgresql does not start itself by default)
 
-* Configuration
+To run the application, please cd into the repo and run:
+- bundle install
+- npm install --prefix client
+- rails db:create
+- rails db:seed
+- rails s
+- in another terminal window run: npm start --prefix client
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+*please ensure your CORS settings are not blocking any requests
