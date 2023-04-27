@@ -8,8 +8,8 @@ It was built as part of my software engineering course from Academy Xi (Flatiron
 Keep in mind that the courses from the db:seeds file are (very sadly) not real and you won't actually learn the Kamehameha technique. However, if you do learn it, please let me know.  
 
 <h3> What technologies does it use? </h3>
-Frontend: 
-- React 
+Frontend: </br>
+- React </br>
 - Material UI
 
 Backend: 
