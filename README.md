@@ -9,9 +9,9 @@ Keep in mind that the courses from the db:seeds file are (very sadly) not real a
 
 <h3> What technologies does it use? </h3>
 Frontend: </br>
-- React </br>
-- Material UI
-
+* React </br>
+* Material UI
+</br>
 Backend: 
 * Ruby on Rails 7 supplying the API 
 * Ruby 3.2.2
