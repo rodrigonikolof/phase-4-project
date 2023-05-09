@@ -3,6 +3,7 @@
 <h3> What is it? </h3>
 Youdemy is a fullstack application which allows students to sign up/sign in and enrol in various courses. 
 Once enroled in a course, the student is able to cancel their enrolment from the My Enrolments page. The Courses page will also show all the courses the student is enroled and prevent them from doubling up. 
+This application uses cookie sessions as a security measure. 
 It was built as part of my software engineering course from Academy Xi (Flatiron School). 
 
 Keep in mind that the courses from the db:seeds file are (very sadly) not real and you won't actually learn the Kamehameha technique. However, if you do learn it, please let me know.  
