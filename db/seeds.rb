@@ -7,7 +7,9 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Seeding..."
-
+House.delete_all
+Course.delete_all
+Student.delete_all
 House.create(house_name: "Frightened Bananas", house_img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTHKMRvjAJ5evUVrpSIdNH_408RB9Fh78ak2JZruzP7Q&s")
 
 House.create(house_name: "Crying Pumpkins", house_img: "https://as2.ftcdn.net/v2/jpg/02/50/47/93/1000_F_250479315_jf00UuLYImXnO7iPtgAfSTvP9mOYkwtJ.jpg")
